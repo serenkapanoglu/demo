@@ -1,6 +1,6 @@
 import './App.css';
 import UserContext from "./login/UserContext";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Routes,Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
 //import { jwtDecode } from 'jwt-decode';
 
@@ -75,7 +75,12 @@ function App() {
             value={{ currentUser, setCurrentUser }}>
           <div className="App">
             <NavBar logout={logout} />
-            <Routes login={login} signup={signup} />
+    {/*<Routes login={login} signup={signup} /> */}
+    <Routes>
+    <Route exact path="/" element={<Homepage />} />
+  <Route exact path="/login" element={<LoginForm login={login} />} />
+  <Route exact path="/signup" element={<SignupForm signup={signup} />} />
+  </Routes>
           </div>
         </UserContext.Provider>
       </BrowserRouter>
